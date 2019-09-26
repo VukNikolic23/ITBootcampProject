@@ -9,9 +9,12 @@ import page.objects.HumanityHome;
 import page.objects.HumanityStaff;
 import utility.ExcelUtil;
 
-public class HumanityAddNewEmployeeTests {
+public class HumanityAddNewEmpAUTO {
 
-	public static void AddEmpTest() {
+	public static void AddEmpAUTO() {
+		ExcelUtil.setExcell("Data.xls");
+		ExcelUtil.setWorkSheet(1);
+		
 
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
@@ -43,17 +46,16 @@ public class HumanityAddNewEmployeeTests {
 			HumanityStaff.getEmployee(driver);
 			HumanityStaff.clickEmployee(driver);
 			//INPUT EMPLOYEE NAME
-			HumanityStaff.getNameEmployee(driver);
-			HumanityStaff.clickNameEmployee(driver);
-			HumanityStaff.inputNameEmployee(driver, "Marija");
-			//INPUT EMPLOYEE LAST NAME
-			HumanityStaff.getLastEmployee(driver);
-			HumanityStaff.clickLastEmployee(driver);
-			HumanityStaff.inputLastEmployee(driver, "Maric");
-			//INPUT EMPLOYEE EMAIL
-			HumanityStaff.getEmailEmployee(driver);
-			HumanityStaff.clickEmailEmployee(driver);
-			HumanityStaff.inputEmailEmployee(driver, "marijica@gmail.com");
+			for (int i=1; i < ExcelUtil.getRowNumber(); i++) {
+				String name = ExcelUtil.getDataAt(i,0);
+				String lastname = ExcelUtil.getDataAt(i, 1);
+				String email = ExcelUtil.getDataAt(i, 2);
+				
+				HumanityStaff.inputNameEmployee(driver, i, name);;
+				HumanityStaff.inputLastEmployee(driver, i, lastname);
+				HumanityStaff.inputEmailEmployee(driver, i, email);
+				
+			}
 			//SAVE EMPLOYEE
 			HumanityStaff.getSaveButton(driver);
 			HumanityStaff.clickSaveButton(driver);
@@ -81,3 +83,4 @@ public class HumanityAddNewEmployeeTests {
 		
 	}
 }
+

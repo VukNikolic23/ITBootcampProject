@@ -7,11 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import page.objects.HumanityHome;
 import page.objects.HumanityProfile;
-import utility.ExcelUtil;
 
-public class HumanityProfileTest {
-public static void ProfileTest() throws InterruptedException {
-
+public class HumanitySingOutTest {
+public static void SingOutTest() throws InterruptedException {
 		
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
@@ -36,19 +34,14 @@ public static void ProfileTest() throws InterruptedException {
 		HumanityHome.inputLoginPass(driver, "pornhub");
 		HumanityHome.getLoginButton(driver);
 		HumanityHome.clickLoginButton(driver);
-		
-		Thread.sleep(5000);
-	
+		//Enter profile icon
 		HumanityProfile.getProfileIcon(driver);
 		HumanityProfile.clickProfileIcon(driver);
-		HumanityProfile.getProfile(driver);
-		HumanityProfile.clickProfile(driver);
-		
-		HumanityProfile.getProfileIcon(driver);
-		HumanityProfile.clickProfileIcon(driver);
+		//Sing out button
 		HumanityProfile.getSingOut(driver);
 		HumanityProfile.clickSingOut(driver);
-		Thread.sleep(4000);
+		
+		Thread.sleep(5000);
 		if(driver.getCurrentUrl().equals("https://garavisokak.humanity.com/app/")){
 			System.out.println("Uspesna odjava");
 			
@@ -56,9 +49,7 @@ public static void ProfileTest() throws InterruptedException {
 		else {
 			System.out.println("Neuspesna odjava");
 		}
-		
-		
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		driver.quit();
 		}catch(Exception e) {
 			System.out.println(e.toString());

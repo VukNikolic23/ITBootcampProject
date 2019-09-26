@@ -49,7 +49,7 @@ public class HumanitySettingsTest {
 				HumanitySettings.inputLanguage(driver, "Serbian (machine)");
 				//SELECT TIME FORM
 			
-				HumanitySettings.inputTime(driver, "24h");
+				HumanitySettings.inputTime(driver, "24 hour");
 				
 				HumanitySettings.getSaveBtn(driver);
 				HumanitySettings.clickSaveBtn(driver);

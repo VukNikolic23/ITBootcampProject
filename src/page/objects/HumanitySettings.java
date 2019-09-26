@@ -35,7 +35,7 @@ public class HumanitySettings {
 	}
 	//TIME FORM
 	public static Select getTime(WebDriver driver) {
-		return new Select ((WebElement) driver.findElements(By.xpath(TIME_XPATH)));
+		return new Select (driver.findElement(By.xpath(TIME_XPATH)));
 	}
 	public static void inputTime (WebDriver driver, String data) {
 		getTime(driver).selectByVisibleText(data);
